@@ -1,9 +1,10 @@
 import React from 'react'
+import { Link, Switch, Route } from 'react-router-dom'
 
-export default function CountryDetails() {
+export default function CountryDetails(props) {
     return (
         <div className="col-7">
-        <h1>France</h1>
+        <h1>{props.match.params.countryCode}</h1>
         <table className="table">
           <thead></thead>
           <tbody>
