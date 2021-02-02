@@ -1,9 +1,10 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Navbar from './components/Navbar';
 import CountriesList from './components/CountriesList';
 import CountryDetails from './components/CountryDetails';
+import countries from './countries.json'
+import { Link, Switch, Route } from 'react-router-dom'
 
 function App() {
   return (
@@ -12,8 +13,12 @@ function App() {
 
       <div className="container">
         <div className="row">
-          <CountriesList />
-          <CountryDetails />
+          <CountriesList countriesList={countries} />
+          <Switch>
+            <Route path="/:countryCode" render={props => {
+              return <CountryDetails {...props} countriesList={countries} />
+            }} />
+          </Switch>
         </div>
       </div>
     </div>
